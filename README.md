@@ -61,35 +61,6 @@ This boilerplate is meant to be a starting point for your project and can be cus
 - Add new pages, components, and hooks to the app.
 - Modify the example server-side API calls in the hooks to match your own API.
 
-## Icons
-
-Here are some icons you can use in your README.md file:
-
-- :rocket:
-- :bulb:
-- :computer:
-- :books:
-- :memo:
-- :gear:
-- :chart_with_upwards_trend:
-- :tada:
-- :warning:
-- :gift:
-- :hammer:
-- :beetle:
-- :fire:
-- :art:
-- :sparkles:
-- :zap:
-- :construction:
-- :hourglass:
-- :loudspeaker:
-- :speech_balloon:
-- :bookmark:
-- :wrench:
-
-Feel free to use these or any other emojis/icons that fit your project's theme!
-
 ## Conclusion
 
 This React app boilerplate provides a solid foundation for building a modern web application with React. It includes popular libraries and patterns that will help you build scalable, maintainable, and performant apps with ease.
