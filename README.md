@@ -23,17 +23,15 @@ npm install
 
 Once the installation is complete, you can start the development server:
 
-npm start
+### `npm test`
 
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-This will open the app in your browser at `http://localhost:3000/`. Any changes you make to the code will be hot-reloaded automatically.
+### `npm run build`
 
-To build the app for production, use the following command:
-
-npm run build
-
-
-This will create an optimized production build in the `build` directory.
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
 ## Usage
 
