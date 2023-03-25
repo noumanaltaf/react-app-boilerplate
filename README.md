@@ -16,7 +16,7 @@ To get started with this boilerplate, simply clone this repository and install t
 
 Once the installation is complete, you can start the development server:
 
-git clone https://github.com/your-username/your-project.git
+git clone https://github.com/noumanaltaf/react-app-boilerplate.git
 cd your-project
 npm install
 
