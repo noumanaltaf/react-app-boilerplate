@@ -8,7 +8,7 @@ export const TodoDispatchContext = createContext<Dispatch<IActions>>(() => null)
 
 export const useTodoDispatch = () => useContext(TodoDispatchContext);
 export const useTodoState = () => useContext(TodoContext);
-export const useTodoContextSelector: any = (selector: (s: IState) => any) => useContextSelector(TodoContext, selector);
+export const useTodoContextSelector = <K extends keyof IState>(selector: (state: IState) => IState[K]) => useContextSelector<IState, IState[K]>(TodoContext, selector);
 
 interface ISalesProcessingStateProvider {
   children: React.ReactNode

@@ -1,4 +1,4 @@
-import { IPageRoutes } from "../../../routes";
+import { IPageRoutes } from "../../routes";
 
 export type IModule = {
   id: number;

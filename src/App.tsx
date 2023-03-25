@@ -5,11 +5,11 @@ import {
   Routes,
   Route,
 } from "react-router-dom"
-import LayoutFrame from './components/pages/LayoutFrame';
+import LayoutFrame from './pages/LayoutFrame';
 import { pageRoutes } from './routes';
 
-const Dashboard = React.lazy(() => import('./components/pages/Dashboard'));
-const TodoList = React.lazy(() => import('./components/pages/TodoList'));
+const Dashboard = React.lazy(() => import('./pages/Dashboard'));
+const TodoList = React.lazy(() => import('./pages/TodoList'));
 
 function App() {
   return (

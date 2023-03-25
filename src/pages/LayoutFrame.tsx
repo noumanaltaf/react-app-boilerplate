@@ -1,9 +1,9 @@
 import React from 'react';
 import { NavBar } from './Pages.styles';
-import BackSVG from '../../assets/svg/back.svg';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { pageRoutes } from '../../routes';
+import { pageRoutes } from '../routes';
 import { IconButton } from '@mui/material';
+import BackSVG from '../assets/svg/back.svg';
 
 const LayoutFrame = () => {
   const { pathname } = useLocation();

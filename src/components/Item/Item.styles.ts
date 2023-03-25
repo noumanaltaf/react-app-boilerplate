@@ -5,7 +5,6 @@ export const CardStyled = styled(Card)`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 50%;
   margin: 1rem;
   padding: 1rem;
 `

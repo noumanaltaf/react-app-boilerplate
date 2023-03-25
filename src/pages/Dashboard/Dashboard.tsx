@@ -1,10 +1,10 @@
 import React from 'react';
-import ModuleCard from '../../ModuleCard';
+import ModuleCard from '../../components/ModuleCard';
 import { useNavigate } from 'react-router-dom';
 import { PageContainer } from '../Pages.styles';
-import { IPageRoutes, pageRoutes } from '../../../routes';
+import { IPageRoutes, pageRoutes } from '../../routes';
 import { IModule } from './Dashboard.types';
-import TodoSvg from '../../../assets/svg/todo.svg';
+import TodoSvg from '../../assets/svg/todo.svg';
 
 const MODULES: IModule[] = [
   {

@@ -2,19 +2,32 @@ import React from 'react';
 import { Checkbox, IconButton, Typography } from '@mui/material';
 import { Actions, CardStyled } from './Item.styles';
 import { IItemProps } from './Item.types';
-import EditSvg from '../../assets/svg/edit.svg';
-
-const EditIcon = () => (<img src={EditSvg} alt='' />);
+import { ReactComponent as EditSvg } from '../../assets/svg/edit.svg';
+import { ReactComponent as DeleteSvg } from '../../assets/svg/delete.svg';
+import { useQueryClient } from '@tanstack/react-query';
 
 const Item = (props: IItemProps) => {
   const { text } = props;
+  const queryClient = useQueryClient();
 
+  const handleDelete = React.useCallback(
+    () => {
+      queryClient.setQueryData(['GET', 'todos'], (old: any) => {
+        console.log(old)
+        return old;
+      })
+    },
+    []
+  )
   return (
     <CardStyled>
       <Typography>{text}</Typography>
       <Actions>
         <IconButton>
-          <EditIcon />
+          <EditSvg />
+        </IconButton>
+        <IconButton>
+          <DeleteSvg onClick={handleDelete} />
         </IconButton>
         <Checkbox />
       </Actions>

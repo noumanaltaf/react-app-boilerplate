@@ -11,6 +11,19 @@ function omit(obj: any, keys: any) {
 }
 
 /**
+* isNull checks that passed value is empty, undefined or null
+* @param {any} value
+* @returns {boolean}
+*/
+export const isNull = (value: any) => {
+  return value === '' ||
+    value === undefined ||
+    value === null ||
+    (Array.isArray(value) && value.length === 0) ||
+    (typeof value === 'object' && Object.keys(value).length === 0);
+}
+
+/**
  * create reducer for userReducer hook with object type procedural calls instead of switch cases
  * @param {IState} state state.
  * @param {IActions} actions actions to be called.
@@ -58,7 +71,7 @@ export function injectQueryParamsUrl(url: string, data: any) {
  * @param {object} urlParams actions to be called.
  */
 export const appendUrlSearchParams = (url: string, params: any): string => {
-  if (!Boolean(url) || !Boolean(params)) {
+  if (isNull(url) || isNull(params)) {
     return url;
   }
 
