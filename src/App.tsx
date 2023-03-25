@@ -1,24 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Suspense } from 'react';
 import './App.css';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom"
+import LayoutFrame from './components/pages/LayoutFrame';
+import { pageRoutes } from './routes';
+
+const Dashboard = React.lazy(() => import('./components/pages/Dashboard'));
+const TodoList = React.lazy(() => import('./components/pages/TodoList'));
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='app'>
+      <BrowserRouter>
+        <div>
+          <LayoutFrame />
+          <Routes>
+            <Route path={pageRoutes.main} element={(
+              <Suspense>
+                <Dashboard />
+              </Suspense>
+            )} />
+            <Route path={`${pageRoutes.todo}/*`} element={(
+              <Suspense>
+                <TodoList />
+              </Suspense>
+            )} />
+          </Routes>
+        </div>
+      </BrowserRouter>
     </div>
   );
 }
