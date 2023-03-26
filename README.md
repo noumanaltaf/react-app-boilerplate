@@ -4,14 +4,14 @@ This React app boilerplate includes a set of commonly used libraries and pattern
 
 ## Features
 
-- **React 18.2**
-- **TypeScript**
-- **React Router v6** for navigation.
-- **Tanstack Query** for data fetching and caching.
-- **Context API** as a global state management solution instead of Redux (use-context-selector is used to prevent redrawing issue).
-- **@mui/material 5.11.10** as a UI component library.
-- **Emotion** for styling components with CSS-in-JS.
-- **axios** for handling API calls.
+- [**React 18.2**](https://react.dev/blog/2022/03/29/react-v18)
+- [**TypeScript**](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-0.html)
+- [**React Router v6**](https://reactrouter.com/en/main) for navigation between pages.
+- [**Tanstack Query**](https://tanstack.com/query/latest) for data fetching and caching.
+- [**Context API**](https://legacy.reactjs.org/docs/context.html) as a global state management solution instead of Redux (use-context-selector is used to prevent redrawing issue).
+- [**@mui/material 5.11.10**](https://mui.com/) as a UI component library.
+- [**Emotion**](https://emotion.sh/docs/styled) for styling components with CSS-in-JS.
+- [**axios**](https://axios-http.com/docs/intro) for handling API calls.
 
 ## Getting Started
 
