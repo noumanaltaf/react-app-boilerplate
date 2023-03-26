@@ -7,7 +7,7 @@ This React app boilerplate includes a set of commonly used libraries and pattern
 - **React 18.2**
 - **TypeScript**
 - **React Router v6** for navigation.
-- **Tanstack/query ** for data fetching and caching.
+- **Tanstack Query** for data fetching and caching.
 - **Context API** as a global state management solution instead of Redux (use-context-selector is used to prevent redrawing issue).
 - **@mui/material 5.11.10** as a UI component library.
 - **Emotion** for styling components with CSS-in-JS.
