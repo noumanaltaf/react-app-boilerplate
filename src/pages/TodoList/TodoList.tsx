@@ -1,9 +1,9 @@
 import { Alert, CircularProgress, Snackbar } from '@mui/material';
 import React from 'react';
-import { useFetchTodo } from '../../api/todo/todo';
 import AddTodo from '../../components/AddTodo';
 import BulkActionRow from '../../components/BulkActionRow';
 import Item from '../../components/Item';
+import { useFetchTodo } from '../../hooks/todo/todo';
 import { useTodoContextSelector, useTodoDispatch } from './TodoList.context';
 import { IState } from './TodoList.reducer';
 import { TodoListContainer } from './TodoList.style';
