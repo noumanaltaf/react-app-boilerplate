@@ -11,5 +11,4 @@ export const CardStyled = styled(Card)`
 
 export const Actions = styled(ButtonGroup)`
   display: flex;
-  gap: 1rem;
 `
