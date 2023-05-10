@@ -12,7 +12,8 @@ const TodoList = () => {
   const todos = useFetchTodo();
 
   const todoDispatch = useTodoDispatch();
-  const todoState = useTodoContextSelector((s: IState) => s.toast);
+  const toastState = useTodoContextSelector<any>((s: IState) => s.toast);
+  const selectedTodos = useTodoContextSelector<any>((s: IState) => s.selectedTodos);
 
   const handleToastOnClose = React.useCallback(() => {
     todoDispatch({ setToast: { open: false } });
@@ -20,21 +21,38 @@ const TodoList = () => {
     [todoDispatch]
   );
 
+  const handleItemCheckedChange = React.useCallback((itemId: number, checked: boolean) => {
+    const clonedSelectedTodos = [...selectedTodos];
+    if (checked) {
+      clonedSelectedTodos.push(itemId);
+    } else {
+      const selectedItemIndex = clonedSelectedTodos.findIndex((t) => t === itemId);
+      if (selectedItemIndex > -1) {
+        clonedSelectedTodos.splice(selectedItemIndex, 1);
+      }
+    }
+    todoDispatch({ setSelectedTodos: clonedSelectedTodos });
+  }, [selectedTodos, todoDispatch]);
+
   return (
     <TodoListContainer>
       <Snackbar
-        open={todoState?.open}
+        open={toastState?.open}
         autoHideDuration={2000}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         onClose={handleToastOnClose} >
-        <Alert severity={todoState?.type} sx={{ width: '100%' }}>
-          {todoState?.message}
+        <Alert severity={toastState?.type} sx={{ width: '100%' }}>
+          {toastState?.message}
         </Alert>
       </Snackbar>
       <AddTodo />
-      <BulkActionRow />
+      <BulkActionRow selectedTodos={selectedTodos} />
       {todos.isLoading && <CircularProgress />}
-      {todos.data?.todos?.map((t) => <Item key={t.id} text={t?.todo ?? ''} />)}
+      {todos.data?.todos?.map((t) => <Item
+        key={t.id}
+        id={t.id ?? 0}
+        text={t?.todo ?? ''}
+        checkedOnChange={handleItemCheckedChange} />)}
     </TodoListContainer>
   );
 };

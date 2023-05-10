@@ -1,7 +1,7 @@
 import { APIRoutes } from "../constants";
 import { Payload, useDelete, useFetch, usePost, useUpdate } from "../queryService";
 
-interface ITodo {
+export interface ITodo {
   id?: number;
   todo?: string;
   completed?: boolean;

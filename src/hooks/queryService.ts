@@ -10,7 +10,7 @@ export interface IOptions {
 const prepareUrl = (url: string, data: any, params: object): string =>
   appendUrlSearchParams(injectQueryParamsUrl(url, data), { ...params, ...data?.urlParams });
 
-enum APIMethod {
+export enum APIMethod {
   GET = 'GET',
   POST = 'POST',
   PUT = 'PUT',
