@@ -5,6 +5,8 @@ import { useTodoDispatch } from '../../pages/TodoList/TodoList.context';
 import { CardStyled, InputStyled } from './AddTodo.styles';
 
 const AddTodo = () => {
+  const inputRef = React.useRef<HTMLInputElement>();
+
   const [text, setText] = useState<string>('');
   const createTodo = useCreateTodo();
   const todoDispatch = useTodoDispatch();
@@ -24,6 +26,10 @@ const AddTodo = () => {
             }
           });
 
+          if (inputRef.current) {
+            inputRef.current.value = '';
+          }
+
         }).catch((err) =>
           todoDispatch({
             setToast: {
@@ -38,7 +44,7 @@ const AddTodo = () => {
 
   return (
     <CardStyled>
-      <InputStyled placeholder="Enter todo item..." inputProps={{ 'aria-label': 'todo' }} onChange={(e) => setText(e.target.value)} />
+      <InputStyled inputRef={inputRef} placeholder="Enter todo item..." inputProps={{ 'aria-label': 'todo' }} onChange={(e) => setText(e.target.value)} />
       <Button color="secondary" aria-label="add an alarm" onClick={() => handleOnAdd()}>
         Add
       </Button>
