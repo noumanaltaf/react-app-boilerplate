@@ -14,7 +14,7 @@ const TodoList = React.lazy(() => import('./pages/TodoList'));
 function App() {
   return (
     <div className='app'>
-      <BrowserRouter>
+      <BrowserRouter basename='/react-app-boilerplate'>
         <div>
           <LayoutFrame />
           <Routes>
