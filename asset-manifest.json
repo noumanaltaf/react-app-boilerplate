@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-app-boilerplate/static/css/main.073c9b0a.css",
-    "main.js": "/react-app-boilerplate/static/js/main.54ac3cfc.js",
+    "main.js": "/react-app-boilerplate/static/js/main.a30255cb.js",
     "static/js/240.9b036858.chunk.js": "/react-app-boilerplate/static/js/240.9b036858.chunk.js",
     "static/js/88.27523121.chunk.js": "/react-app-boilerplate/static/js/88.27523121.chunk.js",
     "static/js/787.60f20d5a.chunk.js": "/react-app-boilerplate/static/js/787.60f20d5a.chunk.js",
@@ -11,7 +11,7 @@
     "static/media/delete.svg": "/react-app-boilerplate/static/media/delete.72fd34269ef2218be0579751d2ae76e9.svg",
     "static/media/back.svg": "/react-app-boilerplate/static/media/back.41f29556efbdbc4c3a160b519bb4bec9.svg",
     "main.073c9b0a.css.map": "/react-app-boilerplate/static/css/main.073c9b0a.css.map",
-    "main.54ac3cfc.js.map": "/react-app-boilerplate/static/js/main.54ac3cfc.js.map",
+    "main.a30255cb.js.map": "/react-app-boilerplate/static/js/main.a30255cb.js.map",
     "240.9b036858.chunk.js.map": "/react-app-boilerplate/static/js/240.9b036858.chunk.js.map",
     "88.27523121.chunk.js.map": "/react-app-boilerplate/static/js/88.27523121.chunk.js.map",
     "787.60f20d5a.chunk.js.map": "/react-app-boilerplate/static/js/787.60f20d5a.chunk.js.map",
@@ -19,6 +19,6 @@
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.54ac3cfc.js"
+    "static/js/main.a30255cb.js"
   ]
 }
