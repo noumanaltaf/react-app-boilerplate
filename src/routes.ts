@@ -4,5 +4,6 @@ export interface IPageRoutes {
 }
 export const pageRoutes = {
   main: '/',
+  pagesMain: '/react-app-boilerplate/',
   todo: '/todo',
 };
