@@ -4,8 +4,8 @@ import { Actions, CardStyled } from './Item.styles';
 import { IItemProps } from './Item.types';
 import { ReactComponent as DeleteSvg } from '../../assets/svg/delete.svg';
 import { useQueryClient } from '@tanstack/react-query';
-import { APIMethod } from '../../hooks/queryService';
-import { ITodo } from '../../hooks/todo/todo';
+import { APIMethod } from '../../api/queryService';
+import { ITodo } from '../../api/todo/todo';
 
 const Item = (props: IItemProps) => {
   const { id, text, checkedOnChange = () => undefined } = props;

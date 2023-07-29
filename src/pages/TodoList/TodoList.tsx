@@ -3,53 +3,18 @@ import React from 'react';
 import AddTodo from '../../components/AddTodo';
 import BulkActionRow from '../../components/BulkActionRow';
 import Item from '../../components/Item';
-import { useFetchTodo } from '../../hooks/todo/todo';
+import { useFetchTodo } from '../../api/todo/todo';
 import { useTodoContextSelector, useTodoDispatch } from './TodoList.context';
 import { IState } from './TodoList.reducer';
 import { TodoListContainer } from './TodoList.style';
-// import { useQueryClient } from '@tanstack/react-query';
-// import { APIMethod } from '../../hooks/queryService';
 
 const TodoList = () => {
   const todos = useFetchTodo();
-  // const queryClient = useQueryClient();
 
   const todoDispatch = useTodoDispatch();
   const toastState = useTodoContextSelector<'toast'>((s: IState) => s.toast);
   const selectedTodos = useTodoContextSelector<'selectedTodos'>((s: IState) => s.selectedTodos);
 
-  // React.useEffect(
-  //   () => {
-  //     queryClient.setQueryData([APIMethod.GET, 'todos'], (old: any) => {
-
-
-  //       return {
-  //         ...old,
-  //         todos: [
-  //           {
-  //             id: 1,
-  //             todo: 'this is example text',
-  //             completed: false,
-  //             userId: 12
-  //           },
-  //           {
-  //             id: 2,
-  //             todo: 'this is example text2',
-  //             completed: false,
-  //             userId: 12
-  //           },
-  //           {
-  //             id: 3,
-  //             todo: 'this is example text3',
-  //             completed: false,
-  //             userId: 12
-  //           },
-  //         ]
-  //       };
-  //     });
-  //   },
-  //   [queryClient]
-  // )
   const handleToastOnClose = React.useCallback(() => {
     todoDispatch({ setToast: { open: false } });
   },

@@ -4,8 +4,8 @@ import { ReactComponent as DeleteSvg } from '../../assets/svg/delete.svg';
 import { BulkActionRowContainer, RowText } from './BulkActionRow.style';
 import { IBulkActionRowProperties } from './BulkActionRow.properties';
 import { useQueryClient } from '@tanstack/react-query';
-import { APIMethod } from '../../hooks/queryService';
-import { ITodo } from '../../hooks/todo/todo';
+import { APIMethod } from '../../api/queryService';
+import { ITodo } from '../../api/todo/todo';
 import { useTodoDispatch } from '../../pages/TodoList/TodoList.context';
 
 const BulkActionRow = (props: IBulkActionRowProperties) => {
