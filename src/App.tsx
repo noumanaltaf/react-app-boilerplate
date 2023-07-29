@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useMemo } from 'react';
 import './App.css';
 import {
   BrowserRouter,
@@ -12,9 +12,15 @@ const Dashboard = React.lazy(() => import('./pages/Dashboard'));
 const TodoList = React.lazy(() => import('./pages/TodoList'));
 
 function App() {
+  const basename = useMemo(
+    () => process.env.NODE_ENV === 'development' ?
+      pageRoutes.main : pageRoutes.pagesMain,
+    [process.env.NODE_ENV, pageRoutes]
+  );
+
   return (
     <div className='app'>
-      <BrowserRouter basename='/react-app-boilerplate'>
+      <BrowserRouter basename={basename}>
         <div>
           <LayoutFrame />
           <Routes>
