@@ -1,4 +1,4 @@
-# React App Boilerplate
+# React App Boilerplate - In Progress
 
 This React app boilerplate includes a set of commonly used libraries and patterns to help you get started with your next React project quickly.
 
