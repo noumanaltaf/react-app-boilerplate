@@ -7,6 +7,7 @@ import BackSVG from '../assets/svg/back.svg';
 
 const LayoutFrame = () => {
   const { pathname } = useLocation();
+  console.log(pathname);
   const isNotDashboard = pathname !== pageRoutes.main;
   const navigate = useNavigate();
 
