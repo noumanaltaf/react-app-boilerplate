@@ -8,7 +8,11 @@ import queryClient from './queryClient';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { worker } from "./api/mock/browser";
 
-worker.start();
+worker.start({
+  serviceWorker: {
+    url: 'https://noumanaltaf.github.io/react-app-boilerplate/mockServiceWorker.js',
+  },
+});
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
