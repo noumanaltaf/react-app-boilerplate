@@ -8,11 +8,16 @@ import queryClient from './queryClient';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { worker } from "./api/mock/browser";
 
-worker.start({
-  serviceWorker: {
-    url: 'https://noumanaltaf.github.io/react-app-boilerplate/mockServiceWorker.js',
-  },
-});
+if (process.env.NODE_ENV === 'development') {
+  worker.start();
+} else {
+  worker.start({
+    serviceWorker: {
+      url: 'https://noumanaltaf.github.io/react-app-boilerplate/mockServiceWorker.js',
+    },
+    onUnhandledRequest: 'bypass'
+  });
+}
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
