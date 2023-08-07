@@ -6,6 +6,9 @@ import reportWebVitals from './reportWebVitals';
 import { QueryClientProvider } from '@tanstack/react-query';
 import queryClient from './queryClient';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { worker } from "./api/mock/browser";
+
+worker.start();
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

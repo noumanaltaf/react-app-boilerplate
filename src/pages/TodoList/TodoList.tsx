@@ -1,9 +1,9 @@
 import { Alert, CircularProgress, Snackbar } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 import AddTodo from '../../components/AddTodo';
 import BulkActionRow from '../../components/BulkActionRow';
 import Item from '../../components/Item';
-import { useFetchTodo } from '../../api/todo/todo';
+import { useDeleteTodo, useFetchTodo } from '../../api/todo/todo';
 import { useTodoContextSelector, useTodoDispatch } from './TodoList.context';
 import { IState } from './TodoList.reducer';
 import { TodoListContainer } from './TodoList.style';
@@ -13,7 +13,8 @@ const TodoList = () => {
 
   const todoDispatch = useTodoDispatch();
   const toastState = useTodoContextSelector<'toast'>((s: IState) => s.toast);
-  const selectedTodos = useTodoContextSelector<'selectedTodos'>((s: IState) => s.selectedTodos);
+  const [selectedTodosIds, setSelectedTodosIds] = useState<string[]>();
+  const deleteTodo = useDeleteTodo();
 
   const handleToastOnClose = React.useCallback(() => {
     todoDispatch({ setToast: { open: false } });
@@ -21,18 +22,50 @@ const TodoList = () => {
     [todoDispatch]
   );
 
-  const handleItemCheckedChange = React.useCallback((itemId: number, checked: boolean) => {
-    const clonedSelectedTodos = [...selectedTodos];
+  const handleCheckedOnChange = React.useCallback((id: string, checked: boolean) => {
     if (checked) {
-      clonedSelectedTodos.push(itemId);
+      setSelectedTodosIds((prev) => [...prev ?? [], id]);
     } else {
-      const selectedItemIndex = clonedSelectedTodos.findIndex((t) => t === itemId);
-      if (selectedItemIndex > -1) {
-        clonedSelectedTodos.splice(selectedItemIndex, 1);
-      }
+      setSelectedTodosIds((prev) => prev?.filter((Id) => Id === id));
     }
-    todoDispatch({ setSelectedTodos: clonedSelectedTodos });
-  }, [selectedTodos, todoDispatch]);
+  }, [setSelectedTodosIds]);
+
+  const handleOnDelete = React.useCallback(async (id: string) => {
+    try {
+      await deleteTodo.mutateAsync({ todoId: id });
+      todoDispatch({
+        setToast: {
+          open: true,
+          type: 'success',
+          message: 'Todo deleted successfully'
+        }
+      });
+    } catch (err) {
+      console.warn(err);
+    }
+    setSelectedTodosIds((prev) => prev?.filter((Id) => Id !== id));
+    todos.refetch();
+  }, [deleteTodo, todos, todoDispatch, setSelectedTodosIds]);
+
+  const handleBulkDelete = React.useCallback(async () => {
+    const bulkDeleteAPICallbacks = selectedTodosIds?.map((id) => deleteTodo.mutateAsync({ todoId: id })) as Promise<any>[];
+
+    try {
+      await Promise.all(bulkDeleteAPICallbacks);
+      setSelectedTodosIds([]);
+      todoDispatch({
+        setToast: {
+          open: true,
+          type: 'success',
+          message: 'Todos deleted successfully'
+        }
+      });
+      todos.refetch();
+    } catch (err) {
+      console.warn(err);
+    }
+
+  }, [selectedTodosIds, todos, deleteTodo, todoDispatch, setSelectedTodosIds]);
 
   return (
     <TodoListContainer>
@@ -46,13 +79,14 @@ const TodoList = () => {
         </Alert>
       </Snackbar>
       <AddTodo />
-      <BulkActionRow selectedTodos={selectedTodos} />
-      {todos.isLoading && <CircularProgress />}
+      <BulkActionRow selectedRowsCount={selectedTodosIds?.length ?? 0} onBulkDelete={handleBulkDelete} />
+      {todos.isFetching && <CircularProgress />}
       {todos.data?.todos?.map((t) => <Item
         key={t.id}
-        id={t.id ?? 0}
+        id={t.id ?? '0'}
         text={t?.todo ?? ''}
-        checkedOnChange={handleItemCheckedChange} />)}
+        onDelete={handleOnDelete}
+        checkedOnChange={handleCheckedOnChange} />)}
     </TodoListContainer>
   );
 };

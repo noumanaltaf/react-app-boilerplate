@@ -2,7 +2,7 @@ import { APIRoutes } from "../constants";
 import { Payload, useDelete, useFetch, usePost, useUpdate } from "../queryService";
 
 export interface ITodo {
-  id?: number;
+  id?: string;
   todo?: string;
   completed?: boolean;
   userId?: number;
@@ -12,13 +12,13 @@ interface ITodoResponse {
 }
 
 export const useCreateTodo = () =>
-  usePost<Payload<ITodo>, ITodo>(APIRoutes.todo.create, {});
+  usePost<Payload<ITodo>, ITodo>(APIRoutes.todo.withoutId, {});
 
 export const useFetchTodo = () =>
-  useFetch<ITodoResponse>(APIRoutes.todo.retrieve, {});
+  useFetch<ITodoResponse>(APIRoutes.todo.withoutId, {});
 
 export const useDeleteTodo = () =>
-  useDelete(APIRoutes.todo.delete, {});
+  useDelete(APIRoutes.todo.withId, {});
 
 export const useUpdateTodo = () =>
-  useUpdate(APIRoutes.todo.update, {});
+  useUpdate<Payload<{ todoId: string }>, any>(APIRoutes.todo.withId, {});

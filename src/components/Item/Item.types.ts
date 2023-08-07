@@ -1,6 +1,7 @@
 export interface IItemProps {
   text: string;
-  id: number;
+  id: string;
   completed?: boolean;
-  checkedOnChange?(id: number, checked: boolean): void;
+  onDelete?(id: string): void;
+  checkedOnChange?(id: string, checked: boolean): void;
 }

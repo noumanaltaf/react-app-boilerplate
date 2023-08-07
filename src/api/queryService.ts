@@ -82,8 +82,8 @@ export const useFetchMutation = <P extends UrlParams, R>(
   return useGenericMutation<P, R>(
     (data) => {
       const { urlParams } = data;
-
-      return api.get<R>(url, { params: { ...params, ...urlParams } })
+      const finalUrl = injectQueryParamsUrl(url, data);
+      return api.get<R>(finalUrl, { params: { ...params, ...urlParams } })
         .then((r) => r.data)
         .then((r) => options?.responseParser ? options.responseParser(r) : r);
     },
@@ -107,8 +107,8 @@ export const useDelete = <R>(
   return useGenericMutation<any, R>(
     (data) => {
       const { urlParams } = data;
-
-      return api.delete<R>(url, { params: { ...params, ...urlParams } })
+      const finalUrl = injectQueryParamsUrl(url, data);
+      return api.delete<R>(finalUrl, { params: { ...params, ...urlParams } })
         .then((r) => r.data)
         .then((r) => options?.responseParser ? options.responseParser(r) : r);
     },
@@ -134,8 +134,8 @@ export const usePost = <P extends UrlParams, R>(
   return useGenericMutation<P, R>(
     (data) => {
       const { urlParams } = data;
-
-      return api.post<P, R>(url, data, { params: { ...params, ...urlParams, } })
+      const finalUrl = injectQueryParamsUrl(url, data);
+      return api.post<P, R>(finalUrl, data, { params: { ...params, ...urlParams, } })
         .then((r) => r.data)
         .then((r) => options?.responseParser ? options.responseParser(r) : r);
     },
@@ -184,8 +184,9 @@ export const useUpdate = <P extends UrlParams, R>(
   return useGenericMutation<P, R>(
     (data) => {
       const { urlParams } = data;
+      const finalUrl = injectQueryParamsUrl(url, data);
 
-      return api.put<P, R>(url, data, { params: { ...params, ...urlParams } })
+      return api.put<P, R>(finalUrl, data, { params: { ...params, ...urlParams } })
         .then((r) => r.data)
         .then((r) => options?.responseParser ? options.responseParser(r) : r)
     },

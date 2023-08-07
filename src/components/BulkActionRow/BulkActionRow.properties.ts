@@ -1,3 +1,4 @@
 export interface IBulkActionRowProperties {
-    selectedTodos: number[];
+    selectedRowsCount: number;
+    onBulkDelete?(): void;
 }
