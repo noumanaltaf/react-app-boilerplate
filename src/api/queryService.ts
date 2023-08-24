@@ -145,28 +145,6 @@ export const usePost = <P extends UrlParams, R>(
   );
 };
 
-/**
-* To post result using useQuery and post API call method
-* @param url api endpoint.
-* @param params url params.
-* @param config useQuery options.
-* @template R Response type.
-* @template P Payload type.
-* @returns useQuery result
-*/
-export const usePostQuery = <P, R>(
-  url: string,
-  params: object,
-  options?: IOptions,
-  config?: UseQueryOptions<unknown, Error, R, QueryKey>
-) => useQuery({
-  queryKey: [APIMethod.POST, appendUrlSearchParams(url, params)],
-  queryFn: (data) => api.post<P, R>(url, data as P, { params })
-    .then((r) => r.data)
-    .then((r) => options?.responseParser ? options.responseParser(r) : r),
-  enabled: !!url && config?.enabled,
-  ...config
-})
 
 /**
 * To update result using useMutation and put API call method
