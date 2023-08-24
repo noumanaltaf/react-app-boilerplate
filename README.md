@@ -1,6 +1,7 @@
 # React App Boilerplate - In Progress
 
 This React app boilerplate includes a set of commonly used libraries and patterns to help you get started with your next React project quickly.
+Demo: https://noumanaltaf.github.io/react-app-boilerplate/
 
 ## Features
 
@@ -77,7 +78,7 @@ For each module (e.g Todo List App) a seprate context API is implemented to hand
 
 For handling complex local component states use useReducer hook. Create your reducer function using createReducer function to keep consistency in reducer files code. You can see TodoList.reducer file implementation as a reference.
 
-Use useTodoDispatch for dispatching your state to context and useTodoContextSelector for selecting specific state from context. for [more details](https://github.com/dai-shi/use-context-selector) about these functions. 
+Use useTodoDispatch for dispatching your state to context and useTodoContextSelector for selecting specific state from context. [Read more](https://github.com/dai-shi/use-context-selector) about functions used inside. 
 
 ## Customization
 
@@ -85,7 +86,7 @@ This boilerplate is meant to be a starting point for your project and can be cus
 
 - Replace Material-UI with your preferred UI library or write your own styles with Emotion.
 - Add new pages, components, and hooks to the app.
-- Modify the example server-side API calls in the hooks to match your own API.
+- Modify the example server-side API calls in the api/todo to match your own API.
 
 ## Conclusion
 
